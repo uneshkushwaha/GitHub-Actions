@@ -1,28 +1,30 @@
-name: My First GitHub Actions
+name: My First GitHub Actions #workflow name
 
-on: [push]
+on: [push] #triggered automatically when there is push event
 
-jobs:
-  build:
-    runs-on: self-hosted
+jobs:                       #jobs that will be executed within this workflow
+  build:                    #responsible for running the test
+    runs-on: self-hosted    #it means build job will run on self-hosted runner which can ec2,docker,kubernetes,ubuntu and whatever you've congigured.
 
     strategy:
       matrix:
-        python-version: [3.9]
+        python-version: [3.9, 3.10] #can add multiple versions to test with each version in a separate execution
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/checkout@v3 #download the code from repository
+    - name: Set up Python       #install and configure the specified version
+      uses: actions/setup-python@v2 
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python-version }} #take action to use the specified version
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
+        pip install pytest 
+      #executes pytest framework and run the testfile named additon.py
 
-    - name: Run tests
+    - name: Run tests  #this steps starts core testing
       run: |
-        cd src
+        cd src  
+      #navigate the directory named src within repository , assuming test script as addition.py
         python -m pytest addition.py
