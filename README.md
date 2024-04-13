@@ -1,5 +1,5 @@
 # Steps to create Github_Actions CI file
-Repository to kick start your journey with GitHub Actions
+  step1: create repository and create workflows folder.Under this create .yaml file
 
 ## Comparing with Jenkins 
 
