@@ -1,4 +1,4 @@
-# GitHub-Actions-Zero-to-Hero
+# Steps to create Github_Actions CI file
 Repository to kick start your journey with GitHub Actions
 
 ## Comparing with Jenkins 
